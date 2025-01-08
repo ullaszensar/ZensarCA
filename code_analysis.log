@@ -1,2 +1,9 @@
 2025-01-07 19:35:18,598 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmpwck7rkrk\utils.py
 2025-01-07 19:35:18,610 - INFO - Analysis reports generated: MyApp_code_analysis_20250107_193518.json and MyApp_code_analysis_20250107_193518.html
+2025-01-08 19:26:58,318 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-08 19:26:58,350 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-08 19:26:58,378 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-08 19:26:58,400 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-08 19:26:58,437 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-08 19:26:58,465 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-08 19:26:58,486 - INFO - Analysis reports generated: MyApp_code_analysis_20250108_192658.json and MyApp_code_analysis_20250108_192658.html
