@@ -59,3 +59,17 @@
 2025-01-17 00:37:56,415 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
 2025-01-17 00:37:56,421 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
 2025-01-17 00:37:56,426 - INFO - Analysis report generated: MyApp_CodeLens_20250117_003756.html
+2025-01-17 00:48:30,155 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-17 00:48:30,162 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-17 00:48:30,166 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-17 00:48:30,172 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-17 00:48:30,185 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-17 00:48:30,192 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-17 00:48:30,201 - INFO - Analysis report generated: MyApp_CodeLens_20250117_004830.html
+2025-01-17 00:53:08,452 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-17 00:53:08,456 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-17 00:53:08,459 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-17 00:53:08,462 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-17 00:53:08,465 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-17 00:53:08,468 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-17 00:53:08,475 - INFO - Analysis report generated: MyApp_CodeLens_20250117_005308.html
