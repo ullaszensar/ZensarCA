@@ -4,7 +4,7 @@ A comprehensive web-based source code analysis tool designed to extract demograp
 
 ## Created by
 - **Zensar Project Diamond Team**
-
+![Alt text](/images/1.png "Codelens")
 ## Setup Instructions
 
 ### Prerequisites
