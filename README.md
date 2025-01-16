@@ -3,8 +3,7 @@
 A comprehensive web-based source code analysis tool designed to extract demographic data and integration patterns across multiple programming languages.
 
 ## Created by
-- **AES Team**
-- Zensar
+- **Zensar Project Diamond Team**
 
 ## Setup Instructions
 
@@ -45,8 +44,12 @@ A comprehensive web-based source code analysis tool designed to extract demograp
 
 5. Install required packages:
    ```bash
-   pip install streamlit==1.41.1 pygments==2.18.0
+   pip install streamlit==1.41.1 pygments==2.18.0 plotly==5.18.0
    ```
+   This will install:
+   - Streamlit: For the web interface
+   - Pygments: For code syntax highlighting
+   - Plotly: For interactive data visualizations and dashboards
 
 ### Running the Application
 
@@ -59,7 +62,7 @@ A comprehensive web-based source code analysis tool designed to extract demograp
    ```toml
    [server]
    headless = true
-   address = "127.0.0.1"
+   address = "0.0.0.0"
    port = 5000
 
    [theme]
@@ -116,6 +119,11 @@ ZensarCA/
   - File operations
 - HTML report generation with detailed findings
 - Interactive web interface with syntax highlighting
+- Interactive dashboards with:
+  - File distribution charts
+  - Demographic field analysis
+  - Integration pattern visualization
+  - Correlation graphs
 
 ## Usage
 1. Launch the application using the steps above
@@ -125,6 +133,7 @@ ZensarCA/
 3. Enter the application/repository name
 4. Click "Run Analysis"
 5. View the analysis results:
+   - Interactive dashboards
    - Summary statistics
    - Demographic data findings
    - Integration patterns detected
@@ -143,7 +152,7 @@ ZensarCA/
   - Run with appropriate permissions for file operations
 
 ## Notes
-- Supported file extensions: .py, .java, .js, .ts, .cs, .php, .rb
+- Supported file extensions: .py, .java, .js, .ts, .cs, .php, .rb, .xsd
 - Reports are generated in both JSON and HTML formats
 - The tool requires read access to the source code files/directory
 - Large repositories may take longer to analyze
