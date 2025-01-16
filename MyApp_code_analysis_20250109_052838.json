@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "application_name": "MyApp",
+    "scan_timestamp": "2025-01-09 05:28:38",
+    "repository_path": "D:\\SOAPSpringExample\\src"
+  },
+  "demographic_data": {
+    "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java": {
+      "name": {
+        "data_type": "name",
+        "occurrences": [
+          {
+            "line_number": 27,
+            "code_snippet": "@Bean(name = \"EmployeeService\")"
+          },
+          {
+            "line_number": 39,
+            "code_snippet": "@Bean(name = \"OnlyForTest\")"
+          }
+        ]
+      }
+    },
+    "D:\\SOAPSpringExample\\src\\main\\resources\\wsdl\\employee.xsd": {
+      "name": {
+        "data_type": "name",
+        "occurrences": [
+          {
+            "line_number": 3,
+            "code_snippet": "<xs:element name=\"employee\">"
+          },
+          {
+            "line_number": 11,
+            "code_snippet": "<xs:attribute name=\"id\" type=\"xs:long\" use=\"required\"/>"
+          },
+          {
+            "line_number": 12,
+            "code_snippet": "<xs:attribute name=\"firstname\" type=\"xs:string\" use=\"required\"/>"
+          },
+          {
+            "line_number": 13,
+            "code_snippet": "<xs:attribute name=\"lastname\" type=\"xs:string\" use=\"required\"/>"
+          },
+          {
+            "line_number": 14,
+            "code_snippet": "<xs:attribute name=\"birthdate\" type=\"xs:date\" use=\"required\"/>"
+          },
+          {
+            "line_number": 15,
+            "code_snippet": "<xs:attribute name=\"gender\" type=\"xs:string\" use=\"required\"/>"
+          },
+          {
+            "line_number": 18,
+            "code_snippet": "<xs:element name=\"address\">"
+          },
+          {
+            "line_number": 23,
+            "code_snippet": "<xs:attribute name=\"fromdate\" type=\"xs:date\" use=\"required\"/>"
+          },
+          {
+            "line_number": 24,
+            "code_snippet": "<xs:attribute name=\"todate\" type=\"xs:date\" use=\"optional\"/>"
+          },
+          {
+            "line_number": 25,
+            "code_snippet": "<xs:attribute name=\"address\" type=\"xs:string\" use=\"required\"/>"
+          },
+          {
+            "line_number": 28,
+            "code_snippet": "<xs:element name=\"EmployeeResponse\">"
+          },
+          {
+            "line_number": 35,
+            "code_snippet": "<xs:element name=\"EmployeesResponse\">"
+          },
+          {
+            "line_number": 42,
+            "code_snippet": "<xs:element name=\"EmployeeByIdRequest\">"
+          },
+          {
+            "line_number": 47,
+            "code_snippet": "<xs:attribute name=\"id\" type=\"xs:long\" use=\"required\"/>"
+          },
+          {
+            "line_number": 50,
+            "code_snippet": "<xs:element name=\"EmployeeByNameRequest\">"
+          },
+          {
+            "line_number": 52,
+            "code_snippet": "<xs:documentation>Query an employee by name</xs:documentation>"
+          },
+          {
+            "line_number": 55,
+            "code_snippet": "<xs:attribute name=\"firstname\" type=\"xs:string\" use=\"optional\"/>"
+          },
+          {
+            "line_number": 56,
+            "code_snippet": "<xs:attribute name=\"lastname\" type=\"xs:string\" use=\"optional\"/>"
+          }
+        ]
+      },
+      "address": {
+        "data_type": "address",
+        "occurrences": [
+          {
+            "line_number": 9,
+            "code_snippet": "<xs:element ref=\"n1:address\"/>"
+          },
+          {
+            "line_number": 18,
+            "code_snippet": "<xs:element name=\"address\">"
+          },
+          {
+            "line_number": 25,
+            "code_snippet": "<xs:attribute name=\"address\" type=\"xs:string\" use=\"required\"/>"
+          }
+        ]
+      },
+      "gender": {
+        "data_type": "demographics",
+        "occurrences": [
+          {
+            "line_number": 15,
+            "code_snippet": "<xs:attribute name=\"gender\" type=\"xs:string\" use=\"required\"/>"
+          }
+        ]
+      },
+      "Address": {
+        "data_type": "address",
+        "occurrences": [
+          {
+            "line_number": 20,
+            "code_snippet": "<xs:documentation>Address of the employee</xs:documentation>"
+          }
+        ]
+      }
+    },
+    "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java": {
+      "name": {
+        "data_type": "name",
+        "occurrences": [
+          {
+            "line_number": 37,
+            "code_snippet": ".body(containsString(\"wsdl:portType name=\"));"
+          }
+        ]
+      }
+    }
+  },
+  "integration_patterns": [
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 10,
+      "code_snippet": "import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 10,
+      "code_snippet": "import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 11,
+      "code_snippet": "import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 11,
+      "code_snippet": "import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 12,
+      "code_snippet": "import org.springframework.xml.xsd.SimpleXsdSchema;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 13,
+      "code_snippet": "import org.springframework.xml.xsd.XsdSchema;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 23,
+      "code_snippet": "servlet.setTransformWsdlLocations(true);"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 24,
+      "code_snippet": "return new ServletRegistrationBean<>(servlet, \"/soap/service/*\");"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 28,
+      "code_snippet": "public Wsdl11Definition defaultWsdl11Definition() {"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 29,
+      "code_snippet": "SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 30,
+      "code_snippet": "wsdl11Definition.setWsdl(new ClassPathResource(\"/wsdl/EmployeeServices.wsdl\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 30,
+      "code_snippet": "wsdl11Definition.setWsdl(new ClassPathResource(\"/wsdl/EmployeeServices.wsdl\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 31,
+      "code_snippet": "return wsdl11Definition;"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 36,
+      "code_snippet": "return new SimpleXsdSchema(new ClassPathResource(\"/wsdl/employee.xsd\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 36,
+      "code_snippet": "return new SimpleXsdSchema(new ClassPathResource(\"/wsdl/employee.xsd\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 41,
+      "code_snippet": "return new SimpleXsdSchema(new ClassPathResource(\"/wsdl/employee.xsd\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+      "line_number": 41,
+      "code_snippet": "return new SimpleXsdSchema(new ClassPathResource(\"/wsdl/employee.xsd\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\BackendService.java",
+      "line_number": 6,
+      "code_snippet": "import javax.xml.datatype.DatatypeFactory;"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 18,
+      "code_snippet": "//private static final String NAMESPACE_URI = \"http://www.jpworks.com/employee\";"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "xml_namespaces",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 18,
+      "code_snippet": "//private static final String NAMESPACE_URI = \"http://www.jpworks.com/employee\";"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 20,
+      "code_snippet": "@PayloadRoot(namespace = \"http://www.jpworks.com/employee\", localPart = \"EmployeeByNameRequest\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "xml_namespaces",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 20,
+      "code_snippet": "@PayloadRoot(namespace = \"http://www.jpworks.com/employee\", localPart = \"EmployeeByNameRequest\")"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 33,
+      "code_snippet": "@PayloadRoot(namespace = \"http://www.jpworks.com/employee\", localPart = \"EmployeeByIdRequest\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "xml_namespaces",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+      "line_number": 33,
+      "code_snippet": "@PayloadRoot(namespace = \"http://www.jpworks.com/employee\", localPart = \"EmployeeByIdRequest\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\resources\\wsdl\\employee.xsd",
+      "line_number": 1,
+      "code_snippet": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\resources\\wsdl\\employee.xsd",
+      "line_number": 2,
+      "code_snippet": "<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:vc=\"http://www.w3.org/2007/XMLSchema-versioning\" xmlns:n1=\"http://www.jpworks.com/employee\" targetNamespace=\"http://www.jpworks.com/employee\" elementFormDefault=\"qualified\" attributeFormDefault=\"unqualified\" vc:minVersion=\"1.1\">"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "xml_namespaces",
+      "file_path": "D:\\SOAPSpringExample\\src\\main\\resources\\wsdl\\employee.xsd",
+      "line_number": 2,
+      "code_snippet": "<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:vc=\"http://www.w3.org/2007/XMLSchema-versioning\" xmlns:n1=\"http://www.jpworks.com/employee\" targetNamespace=\"http://www.jpworks.com/employee\" elementFormDefault=\"qualified\" attributeFormDefault=\"unqualified\" vc:minVersion=\"1.1\">"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 31,
+      "code_snippet": "public void wsdl(){"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 31,
+      "code_snippet": "public void wsdl(){"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 34,
+      "code_snippet": ".get(\"http://localhost:\" + port +\"/soap/service/EmployeeService.wsdl\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 34,
+      "code_snippet": ".get(\"http://localhost:\" + port +\"/soap/service/EmployeeService.wsdl\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 34,
+      "code_snippet": ".get(\"http://localhost:\" + port +\"/soap/service/EmployeeService.wsdl\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 37,
+      "code_snippet": ".body(containsString(\"wsdl:portType name=\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "wsdl",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 37,
+      "code_snippet": ".body(containsString(\"wsdl:portType name=\"));"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 42,
+      "code_snippet": "Resource res = resourceLoader.getResource(\"classpath:getEmployeeById.xml\");"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 44,
+      "code_snippet": ".contentType(\"text/xml;charset=UTF-8\")"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 47,
+      "code_snippet": ".post(\"http://localhost:\" + port +\"/soap/service/EmployeeService\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 47,
+      "code_snippet": ".post(\"http://localhost:\" + port +\"/soap/service/EmployeeService\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 55,
+      "code_snippet": "Resource res = resourceLoader.getResource(\"classpath:getEmployeeByName.xml\");"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 57,
+      "code_snippet": ".contentType(\"text/xml;charset=UTF-8\")"
+    },
+    {
+      "pattern_type": "rest_api",
+      "sub_type": "url_patterns",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 60,
+      "code_snippet": ".post(\"http://localhost:\" + port +\"/soap/service/EmployeeService\")"
+    },
+    {
+      "pattern_type": "soap_services",
+      "sub_type": "soap_components",
+      "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+      "line_number": 60,
+      "code_snippet": ".post(\"http://localhost:\" + port +\"/soap/service/EmployeeService\")"
+    }
+  ],
+  "summary": {
+    "files_analyzed": 6,
+    "unique_demographic_fields": [
+      "address",
+      "gender",
+      "Address",
+      "name"
+    ],
+    "demographic_fields_found": 26,
+    "integration_patterns_found": 42,
+    "file_details": [
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\MainApplication.java",
+        "demographic_fields_found": 0,
+        "integration_patterns_found": 0
+      },
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\configuration\\ApplicationConfiguration.java",
+        "demographic_fields_found": 2,
+        "integration_patterns_found": 17
+      },
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\BackendService.java",
+        "demographic_fields_found": 0,
+        "integration_patterns_found": 1
+      },
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\main\\java\\com\\jpworks\\datajdbc\\service\\EmployeeEndpoint.java",
+        "demographic_fields_found": 0,
+        "integration_patterns_found": 6
+      },
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\main\\resources\\wsdl\\employee.xsd",
+        "demographic_fields_found": 23,
+        "integration_patterns_found": 3
+      },
+      {
+        "file_path": "D:\\SOAPSpringExample\\src\\test\\java\\com\\jpworks\\datajdbc\\employee\\SoapTests.java",
+        "demographic_fields_found": 1,
+        "integration_patterns_found": 15
+      }
+    ]
+  }
+}

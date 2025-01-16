@@ -7,3 +7,12 @@
 2025-01-08 19:26:58,437 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
 2025-01-08 19:26:58,465 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
 2025-01-08 19:26:58,486 - INFO - Analysis reports generated: MyApp_code_analysis_20250108_192658.json and MyApp_code_analysis_20250108_192658.html
+2025-01-08 19:51:05,395 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmpl95_kh2k\EmployeeEndpoint.java
+2025-01-08 19:51:05,405 - INFO - Analysis reports generated: MyApp_code_analysis_20250108_195105.json and MyApp_code_analysis_20250108_195105.html
+2025-01-09 05:28:38,186 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-09 05:28:38,217 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-09 05:28:38,242 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-09 05:28:38,280 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-09 05:28:38,315 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-09 05:28:38,335 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-09 05:28:38,362 - INFO - Analysis reports generated: MyApp_code_analysis_20250109_052838.json and MyApp_code_analysis_20250109_052838.html
