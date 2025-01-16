@@ -8,64 +8,117 @@ def apply_custom_styles():
         .main {
             padding: 2rem;
         }
-        
+
         /* Metrics styling */
         .css-1ht1j8u {
-            background-color: #2d3035;
+            background-color: #f8f9fa;
             padding: 1rem;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         /* Expander styling */
         .streamlit-expanderHeader {
-            background-color: #2d3035;
+            background-color: #f8f9fa;
             border-radius: 5px;
         }
-        
+
         /* Code blocks */
         .stCode {
-            background-color: #272822 !important;
+            background-color: #f8f9fa !important;
             border-radius: 5px;
         }
-        
+
         /* Progress bar */
         .stProgress > div > div {
-            background-color: #FF4B4B;
+            background-color: #0066cc;
         }
-        
+
         /* File uploader */
         .uploadedFile {
-            background-color: #2d3035;
+            background-color: #f8f9fa;
             border-radius: 5px;
             padding: 0.5rem;
         }
-        
+
         /* Buttons */
         .stButton > button {
-            background-color: #FF4B4B;
+            background-color: #0066cc;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        
+
+        .stButton > button:hover {
+            background-color: #90EE90 !important;
+            color: #262730 !important;
+        }
+
+        /* Tabs styling */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 2px;
+            background-color: #0066cc;
+            padding: 10px 10px 0 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            color: white !important;
+            background-color: #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {
+            background-color: #004c99;
+        }
+
         /* Sidebar */
-        .css-1d391kg {
-            background-color: #1E1E1E;
+        .css-1d391kg, [data-testid="stSidebar"] {
+            background-color: #e6f3ff !important;
         }
-        
+
         /* Headers */
         h1, h2, h3 {
-            color: #FF4B4B;
+            color: #0066cc;
         }
-        
+
         /* File tree */
         pre {
-            background-color: #2d3035;
+            background-color: #f8f9fa;
             padding: 1rem;
             border-radius: 5px;
             margin: 0.5rem 0;
+        }
+
+        /* Download button styling */
+        .download-button {
+            background-color: #0066cc;
+            color: white !important;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #90EE90;
+            color: #262730 !important;
+            text-decoration: none;
+        }
+
+        /* Table styling */
+        .stMarkdown table {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .stMarkdown td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
         }
         </style>
     """, unsafe_allow_html=True)

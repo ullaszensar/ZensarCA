@@ -16,3 +16,46 @@
 2025-01-09 05:28:38,315 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
 2025-01-09 05:28:38,335 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
 2025-01-09 05:28:38,362 - INFO - Analysis reports generated: MyApp_code_analysis_20250109_052838.json and MyApp_code_analysis_20250109_052838.html
+2025-01-09 07:05:31,968 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmpanwtzkbc\EmployeeEndpoint.java
+2025-01-09 07:05:31,996 - INFO - Analysis reports generated: MyApp_code_analysis_20250109_070531.json and MyApp_code_analysis_20250109_070531.html
+2025-01-16 22:28:12,513 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmptog1pilj\EmployeeEndpoint.java
+2025-01-16 22:28:12,554 - INFO - Analysis reports generated: MyApp_code_analysis_20250116_222812.json and MyApp_code_analysis_20250116_222812.html
+2025-01-16 23:25:09,971 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmp1_8boq8o\EmployeeEndpoint.java
+2025-01-16 23:25:09,982 - INFO - Analysis report generated: MyApp_CodeLens_20250116_232509.html
+2025-01-16 23:26:05,834 - INFO - Analyzing file: C:\Users\ullas\AppData\Local\Temp\tmpvb6yt9rd\EmployeeEndpoint.java
+2025-01-16 23:26:05,849 - INFO - Analysis report generated: MyApp_CodeLens_20250116_232605.html
+2025-01-16 23:26:36,968 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-16 23:26:36,999 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-16 23:26:37,025 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-16 23:26:37,079 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-16 23:26:37,087 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-16 23:26:37,111 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-16 23:26:37,139 - INFO - Analysis report generated: MyApp_CodeLens_20250116_232637.html
+2025-01-16 23:51:20,812 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-16 23:51:20,819 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-16 23:51:20,834 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-16 23:51:20,845 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-16 23:51:20,923 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-16 23:51:20,926 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-16 23:51:20,935 - INFO - Analysis report generated: Test1_CodeLens_20250116_235120.html
+2025-01-17 00:22:30,658 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-17 00:22:30,692 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-17 00:22:30,718 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-17 00:22:30,744 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-17 00:22:30,786 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-17 00:22:30,811 - INFO - Analyzing file: C:\Users\ullas\OneDrive\Desktop\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-17 00:22:30,842 - INFO - Analysis report generated: Good_CodeLens_20250117_002230.html
+2025-01-17 00:28:28,559 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-17 00:28:28,567 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-17 00:28:28,635 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-17 00:28:28,659 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-17 00:28:28,688 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-17 00:28:28,692 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-17 00:28:28,719 - INFO - Analysis report generated: MyApp_CodeLens_20250117_002828.html
+2025-01-17 00:37:56,396 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\MainApplication.java
+2025-01-17 00:37:56,400 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\configuration\ApplicationConfiguration.java
+2025-01-17 00:37:56,405 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\BackendService.java
+2025-01-17 00:37:56,410 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\java\com\jpworks\datajdbc\service\EmployeeEndpoint.java
+2025-01-17 00:37:56,415 - INFO - Analyzing file: D:\SOAPSpringExample\src\main\resources\wsdl\employee.xsd
+2025-01-17 00:37:56,421 - INFO - Analyzing file: D:\SOAPSpringExample\src\test\java\com\jpworks\datajdbc\employee\SoapTests.java
+2025-01-17 00:37:56,426 - INFO - Analysis report generated: MyApp_CodeLens_20250117_003756.html
