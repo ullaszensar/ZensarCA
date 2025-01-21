@@ -228,30 +228,50 @@ def main():
                     stats_cols[2].metric("Integration Patterns", results['summary']['integration_patterns_found'])
                     stats_cols[3].metric("Unique Fields", len(results['summary']['unique_demographic_fields']))
 
-                    # Demographic Data
-                    st.subheader("Demographic Data Findings")
-                    for file_path, fields in results['demographic_data'].items():
-                        with st.expander(f"📄 {os.path.basename(file_path)}"):
-                            for field_name, data in fields.items():
-                                st.write(f"**Field:** {field_name} ({data['data_type']})")
-                                for occurrence in data['occurrences']:
-                                    display_code_with_highlights(
-                                        occurrence['code_snippet'],
-                                        occurrence['line_number'],
-                                        file_path
-                                    )
+                    # Demographic Fields Summary Table
+                    st.subheader("Demographic Fields Summary")
+                    demographic_files = [f for f in results['summary']['file_details'] if f['demographic_fields_found'] > 0]
+                    if demographic_files:
+                        cols = st.columns([0.5, 2, 1, 2])
+                        cols[0].markdown("**#**")
+                        cols[1].markdown("**File Analyzed**")
+                        cols[2].markdown("**Fields Found**")
+                        cols[3].markdown("**Fields**")
 
-                    # Integration Patterns
-                    st.subheader("Integration Patterns")
-                    for pattern in results['integration_patterns']:
-                        with st.expander(f"🔌 {pattern['pattern_type']} - {pattern['sub_type']}"):
-                            st.write(f"**File:** {os.path.basename(pattern['file_path'])}")
-                            st.write(f"**Line:** {pattern['line_number']}")
-                            display_code_with_highlights(
-                                pattern['code_snippet'],
-                                pattern['line_number'],
-                                pattern['file_path']
-                            )
+                        for idx, file_detail in enumerate(demographic_files, 1):
+                            file_path = file_detail['file_path']
+                            unique_fields = []
+                            if file_path in results['demographic_data']:
+                                unique_fields = list(results['demographic_data'][file_path].keys())
+
+                            cols = st.columns([0.5, 2, 1, 2])
+                            cols[0].text(str(idx))
+                            cols[1].text(os.path.basename(file_path))
+                            cols[2].text(str(file_detail['demographic_fields_found']))
+                            cols[3].text(', '.join(unique_fields))
+
+                    # Integration Patterns Summary Table
+                    st.subheader("Integration Patterns Summary")
+                    integration_files = [f for f in results['summary']['file_details'] if f['integration_patterns_found'] > 0]
+                    if integration_files:
+                        cols = st.columns([0.5, 2, 1, 2])
+                        cols[0].markdown("**#**")
+                        cols[1].markdown("**File Name**")
+                        cols[2].markdown("**Patterns Found**")
+                        cols[3].markdown("**Pattern Details**")
+
+                        for idx, file_detail in enumerate(integration_files, 1):
+                            file_path = file_detail['file_path']
+                            pattern_details = set()
+                            for pattern in results['integration_patterns']:
+                                if pattern['file_path'] == file_path:
+                                    pattern_details.add(f"{pattern['pattern_type']}: {pattern['sub_type']}")
+
+                            cols = st.columns([0.5, 2, 1, 2])
+                            cols[0].text(str(idx))
+                            cols[1].text(os.path.basename(file_path))
+                            cols[2].text(str(file_detail['integration_patterns_found']))
+                            cols[3].text(', '.join(pattern_details))
 
                 with tab3:
                     st.header("Available Reports")
@@ -269,7 +289,7 @@ def main():
 
                     if report_files:
                         # Create a table with five columns
-                        cols = st.columns([1, 3, 2, 2, 1])
+                        cols = st.columns([1, 3, 2, 2, 2])
                         cols[0].markdown("**S.No**")
                         cols[1].markdown("**File Name**")
                         cols[2].markdown("**Date**")
@@ -278,7 +298,7 @@ def main():
 
                         # List all reports
                         for idx, report_file in enumerate(report_files, 1):
-                            cols = st.columns([1, 3, 2, 2, 1])
+                            cols = st.columns([1, 3, 2, 2, 2])
 
                             # Serial number column
                             cols[0].text(f"{idx}")

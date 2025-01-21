@@ -102,6 +102,11 @@ def apply_custom_styles():
             text-decoration: none;
             font-size: 0.9rem;
             transition: background-color 0.3s;
+            display: inline-block;
+            white-space: nowrap;
+            text-align: center;
+            min-width: 120px;
+            margin: 0 auto;
         }
 
         .download-button:hover {
@@ -110,15 +115,59 @@ def apply_custom_styles():
             text-decoration: none;
         }
 
-        /* Table styling */
-        .stMarkdown table {
-            width: 100%;
-            margin-bottom: 1rem;
+        /* Analysis tab tables */
+        div[data-testid="stHorizontalBlock"] {
+            background: white;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            min-height: 0;
+            line-height: normal;
         }
 
-        .stMarkdown td {
-            padding: 0.5rem;
-            border-bottom: 1px solid #e9ecef;
+        div[data-testid="stHorizontalBlock"] > div {
+            border-right: none;
+            padding: 5px 10px;
+            margin: 0;
+            min-height: 0;
+        }
+
+        div[data-testid="stHorizontalBlock"] > div:last-child {
+            border-right: none;
+        }
+
+        /* Table headers in Analysis tab */
+        div[data-testid="stMarkdownContainer"] strong {
+            color: #0066cc;
+        }
+
+        /* Export Reports table column styling */
+        div[data-testid="stHorizontalBlock"]:has(> div > a.download-button) {
+            display: flex;
+            align-items: center;
+        }
+
+        div[data-testid="stHorizontalBlock"]:has(> div > a.download-button) > div:last-child {
+            display: flex;
+            justify-content: center;
+            padding: 0 5px;
+            min-width: 120px;
+        }
+
+        /* Additional styles for table rows */
+        div[data-testid="column"] {
+            padding: 0;
+            border: none;
+        }
+
+        div[data-testid="stVerticalBlock"] > div {
+            margin-bottom: 0 !important;
+        }
+
+        .element-container {
+            margin: 0 !important;
+            border: none;
         }
         </style>
     """, unsafe_allow_html=True)
