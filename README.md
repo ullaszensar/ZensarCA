@@ -48,7 +48,7 @@ textColor = "#262730"
 font = "sans serif"
 ```
 
-### 3. Run the Application
+### 3. Run the Applications
 ```bash
 streamlit run app.py
 ```
