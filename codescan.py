@@ -90,7 +90,7 @@ class CodeAnalyzer:
 
     def scan_repository(self) -> Dict:  
         """  
-        Main method to scan the repository and analyze code =ullas 
+        Main method to scan the repository and analyze code 
         """  
         results = {
             'metadata': {

@@ -737,10 +737,10 @@ def show_about_page():
 
     # Team Information
     st.markdown("""
-    ### Coding & Development
+    ### Design & Development
 
-    **Architect**  
-    Ullas Krishnan
+    **❤️ Zensar Project Diamond Team ❤️ **  
+   
 
     ---
 
