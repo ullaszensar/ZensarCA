@@ -1,96 +1,61 @@
-# CodeLens
+# Install core packages
+pip install streamlit==1.41.1
+pip install plotly==5.18.0
+pip install pandas==2.1.4
+pip install pygments==2.18.0
 
-CodeLens is an advanced data analysis and visualization platform designed to streamline cross-file data exploration and intelligent attribute matching.
+# Install data processing packages
+pip install fuzzywuzzy==0.18.0
+pip install python-levenshtein==0.23.0
+pip install openpyxl==3.1.2
 
-## Installation
+# Install optional web scraping package
+pip install trafilatura==1.6.4
+```
 
-1. Clone the repository:
-   ```bash
-   git clone [repository-url]
-   cd CodeLens
-   ```
+Alternatively, you can install all packages at once using:
 
-2. Install all required packages:
-   ```bash
-   pip install streamlit==1.41.1      # Web application framework
-   pip install pandas==2.1.4          # Data processing
-   pip install plotly==5.18.0         # Interactive visualizations
-   pip install fuzzywuzzy==0.18.0     # Fuzzy string matching
-   pip install python-levenshtein     # Fast string comparison
-   pip install pygments==2.18.0       # Syntax highlighting
-   pip install openpyxl==3.1.2        # Excel file handling
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-   Or install all at once:
-   ```bash
-   pip install streamlit pandas plotly fuzzywuzzy python-levenshtein pygments openpyxl
-   ```
+Contents of `requirements.txt`:
+```
+streamlit==1.41.1
+plotly==5.18.0
+pandas==2.1.4
+pygments==2.18.0
+fuzzywuzzy==0.18.0
+python-levenshtein==0.23.0
+openpyxl==3.1.2
+trafilatura==1.6.4
+```
 
-3. Configure Streamlit:
-   ```bash
-   mkdir -p .streamlit
-   ```
+### 2. Configure Streamlit
 
-   Create `.streamlit/config.toml`:
-   ```toml
-   [server]
-   headless = true
-   address = "0.0.0.0"
-   port = 8501
+Create `.streamlit/config.toml` with:
+```toml
+[server]
+headless = true
+address = "0.0.0.0"
+port = 5000
 
-   [theme]
-   primaryColor = "#0066cc"
-   backgroundColor = "#ffffff"
-   secondaryBackgroundColor = "#f0f2f6"
-   textColor = "#262730"
-   font = "sans serif"
-   ```
+[theme]
+primaryColor = "#0066cc"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+font = "sans serif"
+```
 
-## Usage
+### 3. Run the Application
+```bash
+streamlit run app.py
+```
 
-1. Start the application:
-   ```bash
-   streamlit run app.py
-   ```
-
-2. Access the web interface:
-   - Local: `http://localhost:8501`
-   - Network: `http://<your-ip>:8501`
-
-### Key Features
-
-1. **C360 - Meta Demographic Analysis**
-   - Upload Excel files containing demographic data
-   - Use fuzzy matching to compare and analyze attributes
-   - Adjust similarity thresholds for precise matching
-
-2. **Code Analysis**
-   - Upload source code files or provide repository path
-   - View detailed analysis of code patterns
-   - Generate comprehensive reports
-
-3. **Data Visualization**
-   - Explore interactive charts and graphs
-   - Analyze data patterns and correlations
-   - Export visualizations and reports
-
-## Technical Stack
-
-### Core Technologies
-- Frontend Framework: Streamlit
-- Data Processing: Pandas
-- Visualization: Plotly
-- Pattern Matching: FuzzyWuzzy with Python-Levenshtein
-- Code Analysis: Pygments
-
-### Key Libraries and Versions
-- streamlit (1.41.1): Interactive web application framework
-- pandas (2.1.4): Data manipulation and analysis
-- plotly (5.18.0): Interactive data visualization
-- fuzzywuzzy (0.18.0): Fuzzy string matching
-- python-levenshtein: Fast string comparison
-- pygments (2.18.0): Syntax highlighting
-- openpyxl (3.1.2): Excel file handling
+### 4. Access the Application
+- Local development: `http://localhost:5000`
+- Network access: `http://<your-ip>:5000`
 
 ## Project Structure
 ```
@@ -98,8 +63,7 @@ CodeLens/
 ├── .streamlit/
 │   └── config.toml      # Streamlit configuration
 ├── app.py              # Main application file
-├── codescan.py         # Code analysis engine
+├── codescan.py         # Core analysis logic
+├── utils.py            # Utility functions
 ├── styles.py           # Custom styling
-├── utils.py           # Utility functions
-└── README.md          # Documentation
-```
+└── README.md           # Documentation
