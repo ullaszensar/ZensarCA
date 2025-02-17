@@ -36,7 +36,7 @@ class CodeAnalyzer:
             'identity': r'\b(ssn|social_security|tax_id|passport)\b',  
             'demographics': r'\b(age|gender|dob|date_of_birth|nationality|ethnicity)\b'  
         }  
-    
+
         self.integration_patterns = {
             'rest_api': {
                 'http_methods': r'\b(get|post|put|delete|patch)\b.*\b(api|endpoint)\b',
@@ -64,7 +64,7 @@ class CodeAnalyzer:
                 'file_operations': r'\b(csv|excel|xlsx|json|properties).*(read|write|load|save)\b'
             }
         }
-    
+
         # Supported file extensions
         self.supported_extensions = {  
             '.py': 'Python',  
@@ -90,7 +90,7 @@ class CodeAnalyzer:
 
     def scan_repository(self) -> Dict:  
         """  
-        Main method to scan the repository and analyze code  
+        Main method to scan the repository and analyze code =ullas 
         """  
         results = {
             'metadata': {
@@ -451,7 +451,7 @@ def main():
     """
     app_name = input("Enter Application/Repository Name: ")
     repo_path = input("Enter the path to your code repository: ")
-    
+
     try:
         analyzer = CodeAnalyzer(repo_path, app_name)  
         results = analyzer.scan_repository()  
