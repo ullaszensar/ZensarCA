@@ -739,13 +739,9 @@ def show_about_page():
     st.markdown("""
     ### Design & Development
 
-    **❤️ Zensar Project Diamond Team ❤️ **  
-   
-
-    ---
-
-    *Built with ❤️ by the Zensar Project Diamond Team*
+    ❤️ Zensar Project Diamond Team ❤️
     """)
+
 
 def main():
     # Sidebar navigation
