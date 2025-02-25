@@ -8,6 +8,7 @@ from codescan import CodeAnalyzer
 from utils import display_code_with_highlights, create_file_tree
 from styles import apply_custom_styles
 import base64
+import io  # Add io import for BytesIO
 import plotly.express as px
 import plotly.graph_objects as go
 from collections import Counter
@@ -58,7 +59,7 @@ def read_log_file():
     except Exception as e:
         return [f"Error reading log file: {str(e)}"]
 
-def compare_attributes(df1, df2, algorithm_type, threshold):
+def compare_attributes(df1, df2, algorithm_type, threshold, match_type="All"):
     """Compare attributes between two dataframes using fuzzy matching"""
     # Select scoring function based on algorithm type
     if algorithm_type == "Levenshtein Ratio (Basic)":
@@ -70,40 +71,74 @@ def compare_attributes(df1, df2, algorithm_type, threshold):
 
     matches = []
     # Compare attr_name columns only
-    if 'attr_name' in df1.columns:
-        customer_attrs = df1['attr_name'].dropna().unique()
-    else:
-        # If no attr_name column in customer data, return empty DataFrame
+    if 'attr_name' not in df1.columns:
         return pd.DataFrame()
 
-    # Get unique attr_names from filtered Meta Data
-    meta_attrs = df2['attr_name'].dropna().unique()
+    # Get unique values from both dataframes based on match type
+    if match_type == "Business Name":
+        customer_values = df1['business_name'].dropna().unique()
+        meta_values = df2['business_name'].dropna().unique()
+    elif match_type == "Attribute Description":
+        customer_values = df1['attr_description'].dropna().unique()
+        meta_values = df2['attr_description'].dropna().unique()
+    else:  # Default to Attribute Name
+        customer_values = df1['attr_name'].dropna().unique()
+        meta_values = df2['attr_name'].dropna().unique()
 
-    # Compare attributes
-    for customer_attr in customer_attrs:
-        # Get top matches from meta data attr_names
-        attr_matches = process.extract(
-            customer_attr,
-            meta_attrs,
+    # Compare values based on match type
+    for customer_value in customer_values:
+        # Get all relevant information for the customer value
+        if match_type == "Business Name":
+            customer_record = df1[df1['business_name'] == customer_value].iloc[0]
+        elif match_type == "Attribute Description":
+            customer_record = df1[df1['attr_description'] == customer_value].iloc[0]
+        else:
+            customer_record = df1[df1['attr_name'] == customer_value].iloc[0]
+
+        # Get top matches from meta data
+        value_matches = process.extract(
+            customer_value,
+            meta_values,
             scorer=scorer,
             limit=3
         )
 
         # Add matches that meet the threshold
-        for meta_attr, score in attr_matches:
+        for meta_value, score in value_matches:
             if score >= threshold:
-                matches.append({
-                    'C360 Attribute Name': customer_attr,
-                    'Meta Data Attribute Name': meta_attr,
-                    'Meta_Match_Type': 'Attribute Name',
-                    'Meta_Value': meta_attr,
+                # Get meta record information
+                if match_type == "Business Name":
+                    meta_record = df2[df2['business_name'] == meta_value].iloc[0]
+                elif match_type == "Attribute Description":
+                    meta_record = df2[df2['attr_description'] == meta_value].iloc[0]
+                else:
+                    meta_record = df2[df2['attr_name'] == meta_value].iloc[0]
+
+                match_entry = {
+                    'C360 Attribute Name': customer_record['attr_name'] if 'attr_name' in customer_record else 'N/A',
+                    'Meta Data Attribute Name': meta_record['attr_name'] if 'attr_name' in meta_record else 'N/A',
+                    'C360 Business Name': customer_record['business_name'] if 'business_name' in customer_record else 'N/A',
+                    'Meta Data Business Name': meta_record['business_name'] if 'business_name' in meta_record else 'N/A',
+                    'C360 Attribute Description': customer_record['attr_description'] if 'attr_description' in customer_record else 'N/A',
+                    'Meta Data Attribute Description': meta_record['attr_description'] if 'attr_description' in meta_record else 'N/A',
+                    'Meta_Match_Type': match_type,
+                    'Meta_Value': meta_value,
                     'Match Score (%)': score
-                })
+                }
+
+                matches.append(match_entry)
 
     # Create DataFrame and sort by match score
     df_matches = pd.DataFrame(matches)
     if not df_matches.empty:
-        df_matches = df_matches.sort_values('Match Score (%)', ascending=False)
+        # Reorder columns to show attribute names first
+        column_order = [
+            'C360 Attribute Name', 'Meta Data Attribute Name',
+            'C360 Business Name', 'Meta Data Business Name',
+            'C360 Attribute Description', 'Meta Data Attribute Description',
+            'Meta_Match_Type', 'Meta_Value', 'Match Score (%)'
+        ]
+        df_matches = df_matches[column_order].sort_values('Match Score (%)', ascending=False)
 
     return df_matches
 
@@ -179,214 +214,132 @@ def show_demographic_analysis():
             except Exception as e:
                 st.error(f"Error loading meta data file: {str(e)}")
 
-    # Table name filter with fuzzy search
-    st.markdown("### Filter Meta Data by Table Name")
+    # Attribute comparison section
     if st.session_state.df_meta is not None:
-        # Fuzzy search settings
-        st.markdown("#### Search Settings")
-        col1, col2 = st.columns(2)
+        if st.session_state.df_customer is not None:
+            st.markdown("### Compare Attributes")
+            st.markdown("#### Attribute Matching Settings")
 
-        with col1:
-            # Algorithm selection
-            algorithm = st.selectbox(
-                "Select Fuzzy Matching Algorithm",
-                [
-                    "Levenshtein Ratio (Basic)",
-                    "Partial Ratio (Substring)",
-                    "Token Sort Ratio (Word Order)"
-                ],
-                key="table_algorithm"
-            )
-
-        with col2:
-            # Similarity threshold
-            threshold = st.slider(
-                "Similarity Threshold (%)",
-                min_value=0,
-                max_value=100,
-                value=60,
-                help="Minimum similarity score required for a match",
-                key="table_threshold"
-            )
-
-        # Modify table name filter text style
-        st.markdown("""
-            <style>
-            .table-filter-label {
-                color: black;
-                font-weight: bold;
-            }
-            .stDataFrame thead th {
-                background-color: cyan !important;
-                color: black !important;
-                font-weight: bold !important;
-            }
-            .stDataFrame tbody tr:hover {
-                background-color: #f5f5f5;
-            }
-            </style>
-            <div class='table-filter-label'>Enter Table Name to Filter:</div>
-            """, 
-            unsafe_allow_html=True
-        )
-        table_name = st.text_input("", key="table_filter")
-
-        filtered_data = None
-        if table_name:
-            try:
-                # Get unique table names
-                unique_tables = st.session_state.df_meta['table_name'].unique()
-
-                # Select scoring function based on algorithm choice
-                if algorithm == "Levenshtein Ratio (Basic)":
-                    scorer = fuzz.ratio
-                    algorithm_description = """
-                    **Levenshtein Ratio:** Calculates the minimum number of character edits required to transform one string into another.
-                    Best for exact matches with minor typos.
-                    """
-                elif algorithm == "Partial Ratio (Substring)":
-                    scorer = fuzz.partial_ratio
-                    algorithm_description = """
-                    **Partial Ratio:** Finds the best matching substring, useful when the search term is a part of the full table name.
-                    Best for partial matches and substrings.
-                    """
-                else:  # Token Sort Ratio
-                    scorer = fuzz.token_sort_ratio
-                    algorithm_description = """
-                    **Token Sort Ratio:** Sorts the words in both strings before comparing, making it order-independent.
-                    Best for matching strings with the same words in different orders.
-                    """
-
-                # Display algorithm description
-                st.markdown(algorithm_description)
-
-                # Perform fuzzy matching
-                matches = process.extract(
-                    table_name,
-                    unique_tables,
-                    scorer=scorer,
-                    limit=5
+            # Algorithm selection for attribute matching
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                attr_algorithm = st.selectbox(
+                    "Select Attribute Matching Algorithm",
+                    [
+                        "Levenshtein Ratio (Basic)",
+                        "Partial Ratio (Substring)",
+                        "Token Sort Ratio (Word Order)"
+                    ],
+                    key="attr_algorithm"
                 )
 
-                # Filter matches above threshold
-                good_matches = [match for match in matches if match[1] >= threshold]
+            with col2:
+                # Similarity threshold
+                attr_threshold = st.slider(
+                    "Attribute Similarity Threshold (%)",
+                    min_value=0,
+                    max_value=100,
+                    value=60,
+                    help="Minimum similarity score required for attribute matches",
+                    key="attr_threshold"
+                )
 
-                if good_matches:
-                    # Display matches with scores
-                    st.markdown("**Matching Tables Found:**")
-                    for match, score in good_matches:
-                        st.markdown(f"- {match} (Similarity: {score}%)")
+            with col3:
+                match_type = st.selectbox(
+                    "Select Match Type",
+                    [
+                        "Attribute Name",
+                        "Business Name",
+                        "Technical Name",
+                        "Attribute Description"
+                    ],
+                    key="match_type",
+                    index=0  # Set default to first option (Attribute Name)
+                )
 
-                    # Filter and display data
-                    matched_tables = [match[0] for match in good_matches]
-                    filtered_data = st.session_state.df_meta[st.session_state.df_meta['table_name'].isin(matched_tables)]
+            # Compare attributes only if match type is selected
+            if match_type:
+                attribute_matches = compare_attributes(
+                    st.session_state.df_customer,
+                    st.session_state.df_meta,
+                    attr_algorithm,
+                    attr_threshold,
+                    match_type
+                )
 
-                    if len(filtered_data) > 0:
-                        st.markdown(f"**Filtered Results:**")
-                        # Add summary sections for Filtered Results and Matching Attributes
-                        if filtered_data is not None:
-                            st.markdown("### Filtered Results Summary")
-                            filtered_summary_cols = st.columns(3)
-                            filtered_summary_cols[0].metric(
-                                "Tables Found",
-                                len(filtered_data['table_name'].unique())
-                            )
-                            filtered_summary_cols[1].metric(
-                                "Total Attributes",
-                                len(filtered_data['attr_name'].unique())
-                            )
-                            filtered_summary_cols[2].metric(
-                                "Total Records",
-                                len(filtered_data)
-                            )
+                if not attribute_matches.empty:
+                    # Add Matching Attributes Summary
+                    st.markdown("#### Matching Attributes Summary")
+                    match_summary_cols = st.columns(3)
+                    high_confidence_matches = len(attribute_matches[attribute_matches['Match Score (%)'] >= 80])
 
-                            st.dataframe(filtered_data)
+                    match_summary_cols[0].metric(
+                        "Total Matches",
+                        len(attribute_matches)
+                    )
+                    match_summary_cols[1].metric(
+                        "High Confidence Matches (≥80%)",
+                        high_confidence_matches
+                    )
+                    match_summary_cols[2].metric(
+                        "Average Match Score",
+                        f"{attribute_matches['Match Score (%)'].mean():.1f}%"
+                    )
 
-                            # Attribute comparison section
-                            if st.session_state.df_customer is not None:
-                                st.markdown("### Compare Attributes")
-                                st.markdown("#### Attribute Matching Settings")
+                    st.markdown("#### Matching Attributes Details")
+                    # Add Download button at the top right
+                    col1, col2 = st.columns([8, 2])
+                    with col2:
+                        st.markdown(
+                            download_dataframe(
+                                attribute_matches,
+                                "matching_attributes",
+                                "excel",
+                                button_text="Download",
+                                match_type=match_type
+                            ),
+                            unsafe_allow_html=True
+                        )
 
-                                # Algorithm selection for attribute matching
-                                col1, col2 = st.columns(2)
-                                with col1:
-                                    attr_algorithm = st.selectbox(
-                                        "Select Attribute Matching Algorithm",
-                                        [
-                                            "Levenshtein Ratio (Basic)",
-                                            "Partial Ratio (Substring)",
-                                            "Token Sort Ratio (Word Order)"
-                                        ],
-                                        key="attr_algorithm"
-                                    )
+                    st.markdown(
+                        """
+                        <style>
+                        .stDataFrame {
+                            max-height: 400px;
+                            overflow-y: auto;
+                        }
+                        </style>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.dataframe(
+                        attribute_matches,
+                        hide_index=True,
+                        height=400,
+                        use_container_width=True  # Make the grid full width
+                    )
 
-                                with col2:
-                                    attr_threshold = st.slider(
-                                        "Attribute Similarity Threshold (%)",
-                                        min_value=0,
-                                        max_value=100,
-                                        value=60,
-                                        help="Minimum similarity score required for attribute matches",
-                                        key="attr_threshold"
-                                    )
-
-                                # Compare attributes
-                                attribute_matches = compare_attributes(
-                                    st.session_state.df_customer,
-                                    filtered_data,
-                                    attr_algorithm,
-                                    attr_threshold
-                                )
-
-                                if not attribute_matches.empty:
-                                    # Add Matching Attributes Summary
-                                    st.markdown("#### Matching Attributes Summary")
-                                    match_summary_cols = st.columns(3)
-                                    high_confidence_matches = len(attribute_matches[attribute_matches['Match Score (%)'] >= 80])
-
-                                    match_summary_cols[0].metric(
-                                        "Total Matches",
-                                        len(attribute_matches)
-                                    )
-                                    match_summary_cols[1].metric(
-                                        "High Confidence Matches (≥80%)",
-                                        high_confidence_matches
-                                    )
-                                    match_summary_cols[2].metric(
-                                        "Average Match Score",
-                                        f"{attribute_matches['Match Score (%)'].mean():.1f}%"
-                                    )
-
-                                    st.markdown("#### Matching Attributes Details")
-                                    st.markdown(
-                                        """
-                                        <style>
-                                        .stDataFrame {
-                                            max-height: 400px;
-                                            overflow-y: auto;
-                                        }
-                                        </style>
-                                        """,
-                                        unsafe_allow_html=True
-                                    )
-                                    st.dataframe(
-                                        attribute_matches,
-                                        hide_index=True,
-                                        height=400
-                                    )
-                                else:
-                                    st.info("No matching attributes found with the current threshold")
-                    else:
-                        st.warning("No data found for the matched table names")
                 else:
-                    st.warning(f"No similar table names found for: {table_name} (threshold: {threshold}%)")
-            except Exception as e:
-                st.error(f"Error filtering data: {str(e)}")
-
-        # Attribute comparison section (moved inside the if filtered_data is not None block)
-
+                    st.info("No matching attributes found with the current threshold")
+        else:
+            st.info("Please upload Customer Demographic file to compare attributes")
     else:
-        st.info("Please upload Meta Data file to use the filter functionality")
+        st.info("Please upload Meta Data file to use the matching functionality")
+
+
+def download_dataframe(df, file_name, file_format='excel', button_text="Download", match_type="All"):
+    """Generate a download link for a dataframe in Excel format"""
+    # Create a descriptive file name based on match type
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    match_type_name = match_type.replace(" ", "_").lower()
+    file_name = f"attribute_matches_{match_type_name}_{timestamp}"
+
+    buffer = io.BytesIO()
+    df.to_excel(buffer, index=False)
+    b64 = base64.b64encode(buffer.getvalue()).decode()
+    mime_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    download_link = f'<a href="data:{mime_type};base64,{b64}" download="{file_name}.xlsx" class="download-button">{button_text}</a>'
+    return download_link
 
 
 def show_code_analysis():
@@ -739,7 +692,7 @@ def show_about_page():
     st.markdown("""
     ### Design & Development
 
-    ❤️ Zensar Project Diamond Team ❤️
+     Zensar Project Diamond Team 
     """)
 
 
